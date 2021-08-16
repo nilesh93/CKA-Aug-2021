@@ -14,3 +14,5 @@ cd /usr/share/nginx/html/
 kubectl logs ngnix
 
 kubectl get pods --show-labels
+
+kubectl get pods -o wide

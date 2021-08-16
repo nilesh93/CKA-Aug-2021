@@ -6,3 +6,6 @@ multipass launch --name <name> --cpus=1 --mem=2048 --disk=5G
 multipass list
 
 multipass shell <name>
+
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
