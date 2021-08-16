@@ -97,6 +97,27 @@ kubectl apply -f calico-resources.yaml
 
 
 
-#### Create docker image pull Secret
+#### Make sure quay.io images are loaded
 
-kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+kubectl get pods -n calico-system -o yaml | grep image:
+
+Kubectl delete pod <name> -n calico-system --force --grace-period=0
+
+## Static Resources
+
+/etc/kubernetes/manifests
+
+
+## Kubelet
+
+systemctl restart kubelet
+
+cd /var/lib/kubelet/
+
+vi /var/lib/kubelet/config.yaml
+
+journalctl -u kubelet --since 'one minute ago'
+
+## Access Kubectl
+
+KUBECONFIG=/etc/kubernetes/admin.conf kubectl get pods

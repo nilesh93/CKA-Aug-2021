@@ -12,3 +12,5 @@ kubectl port-forward nginx 3000:80
 cd /usr/share/nginx/html/
 
 kubectl logs ngnix
+
+kubectl get pods --show-labels
