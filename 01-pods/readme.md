@@ -1,7 +1,7 @@
-kubectl run nginx --image nginx --port 80 
+kubectl run nginx --image quay.io/bitnami/nginx --port 80 
 kubectl delete pods --all
 
-kubectl run nginx --image nginx --port 80 -o yaml --dry-run=client > nginx-pod.yaml
+kubectl run nginx --image quay.io/bitnami/nginx --port 80 -o yaml --dry-run=client > nginx-pod.yaml
 
 kubectl explain pod.spec.containers.resources
 
