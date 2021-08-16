@@ -10,6 +10,7 @@ Install CNI
 
 
 
+
 sh prerequisites.sh 1.20.0-00
 
 ## Ports
@@ -65,3 +66,25 @@ Then you can join any number of worker nodes by running the following on each as
 
 kubeadm join 10.135.62.106:6443 --token jgbo3e.x528xorothrwqese \
     --discovery-token-ca-cert-hash sha256:bc3330fe39b1898a8ba743bfbb40f1cf02d3ad52fd944965c0186cc07eaf5a7d 
+
+
+
+## CNI
+
+### Introduction
+
+https://www.slideshare.net/JurajHantak/4-cncf-kubernetes-comparison-ofexistingcnipluginsforkubernetes?from_action=save
+
+Calico
+Cillium
+Kube Router
+Canal
+Weavenet
+
+### Install 
+https://docs.projectcalico.org/getting-started/kubernetes/quickstart
+
+kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+#### Download the config and change CIDR 
+wget https://docs.projectcalico.org/manifests/custom-resources.yaml
+
