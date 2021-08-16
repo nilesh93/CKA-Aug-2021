@@ -42,7 +42,7 @@ sh prerequisites.sh 1.20.0-00
 kubeadm init --pod-network-cidr=10.244.0.0/16
 
 ### HA Cluster
-kubeadm init --pod-network-cidr=10.244.0.0/16
+kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs
 
 ## Join
 
@@ -67,6 +67,10 @@ Then you can join any number of worker nodes by running the following on each as
 kubeadm join 10.135.62.106:6443 --token jgbo3e.x528xorothrwqese \
     --discovery-token-ca-cert-hash sha256:bc3330fe39b1898a8ba743bfbb40f1cf02d3ad52fd944965c0186cc07eaf5a7d 
 
+Then you can join any number of master nodes by running the following on each as root:
+
+kubeadm join 10.135.62.106:6443 --token jgbo3e.x528xorothrwqese \
+    --discovery-token-ca-cert-hash sha256:bc3330fe39b1898a8ba743bfbb40f1cf02d3ad52fd944965c0186cc07eaf5a7d 
 
 
 ## CNI
@@ -86,6 +90,13 @@ https://docs.projectcalico.org/getting-started/kubernetes/quickstart
 
 kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 #### Download the config and change CIDR 
+
 wget https://docs.projectcalico.org/manifests/custom-resources.yaml
 
 kubectl apply -f calico-resources.yaml
+
+
+
+#### Create docker image pull Secret
+
+kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
