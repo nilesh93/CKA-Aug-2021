@@ -88,3 +88,4 @@ kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 #### Download the config and change CIDR 
 wget https://docs.projectcalico.org/manifests/custom-resources.yaml
 
+kubectl apply -f calico-resources.yaml
