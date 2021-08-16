@@ -50,6 +50,7 @@ cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 
+apt-mark unhold kubelet kubeadm kubectl
 apt-get update
 apt install kubernetes-cni -y # not in documentation needed for updates
 apt-get install kubelet=$K8S_VERSION kubeadm=$K8S_VERSION kubectl=$K8S_VERSION -y 
