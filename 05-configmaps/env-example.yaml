@@ -28,4 +28,10 @@ spec:
         env:
         - name: WHO_IS_LATE
           value: TAKAKI
+        - name: DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: username
+              name: db-creds # name of the cm
+          
 status: {}
