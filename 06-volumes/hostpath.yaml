@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: busybox
+  name: busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: busybox
+    spec:
+      containers:
+      - image: busybox:1.27
+        name: busybox
+        command:
+        - /bin/sh
+        - -c
+        - sleep 3600;
+        volumeMounts:
+        - name: log-dir
+          mountPath: /logs
+        resources: {}
+      volumes:
+      - name: log-dir
+        hostPath:
+          path: /var/log
+          type: DirectoryOrCreate
+        
+status: {}

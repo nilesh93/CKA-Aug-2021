@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: db-creds
+  # namespace: training
+data:
+  host: postres.com
+  pass: abc1234
+  username: root
+  foo: bar1234
+  abc: asdas
