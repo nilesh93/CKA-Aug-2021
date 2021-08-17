@@ -33,5 +33,16 @@ spec:
             configMapKeyRef:
               key: username
               name: db-creds # name of the cm
+        - name: DB_USERNAME_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: sec-username
+              name: db-creds-secret # name of the secret
+        envFrom:
+        - configMapRef:
+            name: db-creds
+        - secretRef:
+            name: db-creds-secret
+           
           
 status: {}

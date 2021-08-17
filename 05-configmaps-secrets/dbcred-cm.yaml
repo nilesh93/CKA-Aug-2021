@@ -8,3 +8,4 @@ data:
   host: postres.com
   pass: abc1234
   username: root
+  foo: bar

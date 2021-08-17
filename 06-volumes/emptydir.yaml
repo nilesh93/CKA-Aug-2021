@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: busybox
+  name: busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: busybox
+    spec:
+      initContainers:
+      - image: busybox:1.27
+        name: init-busybox
+        command:
+        - /bin/sh
+        - -c
+        - echo "hello from init container $(date)" >> /temp/hello.txt && sleep 2
+        resources: {}
+        volumeMounts:
+        - name: data-vol
+          mountPath: /temp
+      containers:
+      - image: busybox:1.27
+        name: busybox
+        command:
+        - /bin/sh
+        - -c
+        - cat /data/hello.txt && sleep 3600;
+        resources: {}
+        volumeMounts:
+        - name: data-vol # name of the volume
+          mountPath: /data
+      volumes:
+      - name: data-vol
+        emptyDir: {}
+        
+status: {}

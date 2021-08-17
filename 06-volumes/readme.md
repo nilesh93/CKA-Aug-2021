@@ -1,0 +1,1 @@
+kubectl create deploy busybox --image busybox:1.27 -o yaml --dry-run=client > emptydir.yaml

@@ -9,3 +9,5 @@ multipass shell <name>
 
 
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+https://chrispian.com/quick-vi-tip-show-hidden-characters/
