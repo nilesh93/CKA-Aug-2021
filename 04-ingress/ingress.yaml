@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: order-ingress
+spec:
+  rules:
+  - host: "order.myapp.com"
+    http:
+      paths:
+      - path: "/"
+        backend:
+          service:
+            name: order-service
+            port:
+              number: 8000
+  - host: "billing.myapp.com"
+    http:
+      paths:
+      - path: "/"
+        backend:
+          service:
+            name: billing-service
+            port:
+              number: 8000
+  tls:
+  - hosts:
+    - "order.myapp.com"
+    - "billing.myapp.com"
+    secretName: "<cert-name>"
+    
