@@ -46,3 +46,11 @@ ETCDCTL_API=3 etcdctl --endpoints 10.135.62.106:2379 \
   --key=/etc/kubernetes/pki/etcd/server.key \
   --cacert=/etc/kubernetes/pki/etcd/ca.crt \
 snapshot save backup
+
+
+
+ETCDCTL_API=3 etcdctl --endpoints 10.135.62.106:2379 \
+  --cert=/etc/kubernetes/pki/etcd/server.crt \
+  --key=/etc/kubernetes/pki/etcd/server.key \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+--write-out=table snapshot status backup
