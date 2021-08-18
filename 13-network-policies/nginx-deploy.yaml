@@ -18,9 +18,9 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx
+      - image: quay.io/bitnami/nginx
         name: nginx
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources: {}
 status: {}
