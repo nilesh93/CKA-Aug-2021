@@ -1,0 +1,56 @@
+# headless service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: nginx
+---
+# statefulset yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: nginx 
+  serviceName: "nginx" # name of the headless service created
+  replicas: 2
+  template: # pod template
+    metadata:
+      labels:
+        app: nginx 
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www # taken from PVC template name
+          mountPath: /usr/share/nginx/html
+        - name: temp
+          mountPath: /temp
+      volumes:
+      - name: temp
+        emptyDir: {}
+      
+  volumeClaimTemplates: # PVC template
+  - metadata:
+      name: www # PVC template name
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "standard"
+      resources:
+        requests:
+          storage: 1Gi

@@ -1,0 +1,14 @@
+# headless service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-main
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  selector:
+    app: nginx
+  type: ClusterIP
