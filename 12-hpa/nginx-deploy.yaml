@@ -6,7 +6,7 @@ metadata:
     app: nginx
   name: nginx
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -18,11 +18,9 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: quay.io/bitnami/nginx:v1
+      - image: nginx
         name: nginx
         ports:
-        - containerPort: 8080
-        resources: 
-         requests:
-           memory: 10Mi
+        - containerPort: 80
+        resources: {}
 status: {}

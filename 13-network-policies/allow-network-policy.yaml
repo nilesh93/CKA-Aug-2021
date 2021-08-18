@@ -14,7 +14,7 @@ spec:
         matchLabels:
           run: busybox
     ports:
+    # - protocol: TCP
+    #   port: 80
     - protocol: TCP
-      port: 80
-    - protocol: TCP
-      port: 8080
+      port: 8080 # you need to expose container port and NOT the service port

@@ -21,3 +21,7 @@ kubectl get pods -o wide
 ## list pods with a particular label and write it into a file
 
 kubectl get pods -l env_name=development -l app=nginx > file.txt
+
+
+
+kubectl run ngix --image nginx --port 80 -o yaml --dry-run=client > exam-pod.yaml
