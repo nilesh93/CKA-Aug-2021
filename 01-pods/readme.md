@@ -16,3 +16,8 @@ kubectl logs ngnix
 kubectl get pods --show-labels
 
 kubectl get pods -o wide
+
+
+## list pods with a particular label and write it into a file
+
+kubectl get pods -l env_name=development -l app=nginx > file.txt
